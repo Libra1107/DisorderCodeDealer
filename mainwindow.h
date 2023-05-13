@@ -9,10 +9,6 @@
 #include <QTextCodec>
 #include <QTextStream>
 
-#include <QIcon>
-#include <QDir>
-#include <QFileDialog>
-#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,6 +28,8 @@ private slots:
     void on_fileBrower_clicked(const QModelIndex &index);
 
     void on_pushButton_2_clicked();
+
+    void on_filePath_returnPressed();
 
 private:
     Ui::MainWindow *ui;
