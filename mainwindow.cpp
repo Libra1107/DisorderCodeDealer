@@ -35,34 +35,11 @@ QString lineTrans(const QString& codeLine)
     return outputString;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    QString inputString = ui->sourceCode->toPlainText();
-    if(inputString==0)
-    {
-        QMessageBox::warning(nullptr,tr("提示"),tr("输入内容"));
-        return;
-    }
-    ui->solvedCode->clear();
-    QString outputString = lineTrans(inputString);
-    ui->solvedCode->insertPlainText(outputString);
-}
 
-void MainWindow::on_fileBrower_clicked(const QModelIndex &index)
+void MainWindow::contentTrans(const QString& path)
 {
-    QString filePath = model->filePath(index);
-    ui->filePath->setText(filePath);
-}
 
-void MainWindow::on_pushButton_2_clicked()
-{
-    QString filePath = ui->filePath->text();
-    if (!filePath.endsWith(".txt", Qt::CaseInsensitive)) {
-        QMessageBox::warning(nullptr,tr("抱歉"),tr("暂不支持非文本类文件"));
-        return;
-    }
-
-    QFile readFile(filePath);
+    QFile readFile(path);
     if (!readFile.open(QIODevice::Text | QIODevice::ReadOnly)) {
         QMessageBox::warning(nullptr,tr("错误"),tr("无法打开文件"));
         return;
@@ -72,7 +49,7 @@ void MainWindow::on_pushButton_2_clicked()
     QTextCodec *readCodec = QTextCodec::codecForName("GBK");
     readStream.setCodec(readCodec);
 
-    QFile writeFile(filePath + ".trans");
+    QFile writeFile(path + ".trans");
     if (!writeFile.open(QIODevice::Text | QIODevice::WriteOnly)) {
         QMessageBox::warning(nullptr,tr("错误"),tr("无法写入"));
         return;
@@ -96,12 +73,80 @@ void MainWindow::on_pushButton_2_clicked()
 
     if(ui->fileNameTrans->isChecked())
     {
-        QFile::rename(filePath + ".trans", lineTrans(filePath));
+        QString newFilePath = lineTrans(path);
+        QFile::rename(path + ".trans", newFilePath);
     }
     else
     {
-        QFile::rename(filePath + ".trans", filePath);
+        QFile::rename(path + ".trans", path);
     }
+}
+
+
+void MainWindow::readAllFiles(const QString& path)
+{
+    QString newPath = path;
+    if(ui->fileNameTrans->isChecked())
+    {
+        newPath = lineTrans(path);
+    }
+
+    QFileInfo fileInfo(path);
+
+    if (fileInfo.exists())
+    {
+        if (fileInfo.isFile())
+        {
+            MainWindow::contentTrans(path);
+        }
+        else if (fileInfo.isDir())
+        {
+            QDir dir;
+            dir.mkpath(newPath);
+
+            QDirIterator folderIt(path, QDir::Dirs | QDir::NoDotAndDotDot);
+            while (folderIt.hasNext())
+            {
+                QString folderPath = folderIt.next();
+                MainWindow::readAllFiles(folderPath);
+            }
+
+            QDirIterator it(path, QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+            while (it.hasNext())
+            {
+                QString filePath = it.next();
+                MainWindow::contentTrans(filePath);
+            }
+
+            QDir(path).removeRecursively();
+        }
+    }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString inputString = ui->sourceCode->toPlainText();
+    if(inputString==0)
+    {
+        QMessageBox::warning(nullptr,tr("提示"),tr("输入内容"));
+        return;
+    }
+    ui->solvedCode->clear();
+    QString outputString = lineTrans(inputString);
+    ui->solvedCode->insertPlainText(outputString);
+}
+
+void MainWindow::on_fileBrower_clicked(const QModelIndex &index)
+{
+    QString filePath = model->filePath(index);
+    ui->filePath->setText(filePath);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QString filePath = ui->filePath->text();
+    MainWindow::readAllFiles(filePath);
+
 }
 
 
