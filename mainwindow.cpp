@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QIcon>
+#include <QDir>
+#include <QFileDialog>
+#include <QStringList>
+
 #include <QDebug>
 
 
@@ -43,13 +48,11 @@ void MainWindow::on_pushButton_clicked()
     ui->solvedCode->insertPlainText(outputString);
 }
 
-
 void MainWindow::on_fileBrower_clicked(const QModelIndex &index)
 {
     QString filePath = model->filePath(index);
     ui->filePath->setText(filePath);
 }
-
 
 void MainWindow::on_pushButton_2_clicked()
 {
@@ -99,5 +102,19 @@ void MainWindow::on_pushButton_2_clicked()
     {
         QFile::rename(filePath + ".trans", filePath);
     }
+}
+
+
+void MainWindow::on_filePath_returnPressed()
+{
+    QString filePath = ui->filePath->text();
+
+    QDir dir(filePath);
+    if (!dir.exists()) {
+        QMessageBox::warning(this, tr("错误"), tr("输入的路径不存在，将返回系统目录"));
+    }
+
+    QModelIndex fileIndex = model->index(filePath);
+    ui->fileBrower->setRootIndex(fileIndex);
 }
 
