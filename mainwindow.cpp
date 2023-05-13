@@ -20,6 +20,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QString lineTrans(const QString& codeLine)
+{
+    QTextCodec* fromcodec = QTextCodec::codecForName("GBK");
+    QByteArray getstring = fromcodec->fromUnicode(codeLine);
+
+    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");\
+    QString outputString = tocodec->toUnicode(getstring);
+    return outputString;
+}
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -30,12 +39,7 @@ void MainWindow::on_pushButton_clicked()
         return;
     }
     ui->solvedCode->clear();
-    QTextCodec* fromcodec = QTextCodec::codecForName("GBK");
-    QByteArray getstring = fromcodec->fromUnicode(inputString);
-
-    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");
-
-    QString outputString = tocodec->toUnicode(getstring);
+    QString outputString = lineTrans(inputString);
     ui->solvedCode->insertPlainText(outputString);
 }
 
@@ -87,7 +91,13 @@ void MainWindow::on_pushButton_2_clicked()
     readFile.remove();
     writeFile.close();
 
-    QFile::rename(filePath + ".trans", filePath);
-
+    if(ui->fileNameTrans->isChecked())
+    {
+        QFile::rename(filePath + ".trans", lineTrans(filePath));
+    }
+    else
+    {
+        QFile::rename(filePath + ".trans", filePath);
+    }
 }
 
