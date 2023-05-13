@@ -38,6 +38,12 @@ QString lineTrans(const QString& codeLine)
 
 void MainWindow::contentTrans(const QString& path)
 {
+    if(ui->onlyTransName->isChecked())
+    {
+        QString newFilePath = lineTrans(path);
+        QFile::rename(path, newFilePath);
+        return;
+    }
 
     QFile readFile(path);
     if (!readFile.open(QIODevice::Text | QIODevice::ReadOnly)) {
