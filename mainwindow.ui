@@ -196,6 +196,27 @@
        </item>
       </layout>
      </widget>
+     <widget class="QCheckBox" name="fileNameTrans">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>785</y>
+        <width>191</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>同时转换文件名</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
