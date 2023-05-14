@@ -33,7 +33,7 @@ QString lineTrans(const QString& codeLine)
     QTextCodec* fromcodec = QTextCodec::codecForName("GBK");
     QByteArray getstring = fromcodec->fromUnicode(codeLine);
 
-    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");\
+    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");
         QString outputString = tocodec->toUnicode(getstring);
     return outputString;
 }
@@ -85,6 +85,44 @@ void MainWindow::contentTrans(const QString& path)
     }
 }
 
+void MainWindow::filePretrans(const QString& filepath)
+{
+    ui->filePreview->clear();
+    ui->transPreview->clear();
+    QFile readFile(filepath);
+
+    if (!readFile.open(QIODevice::Text | QIODevice::ReadOnly)) {
+        ui->filePreview->insertPlainText("无法读取");
+        return;
+    }
+
+    QFileInfo fileInfo(filepath);
+    qint64 fileSize = fileInfo.size();
+    if (fileSize > 1024 * 1024) {
+        QString message = "这个文件较大，会导致运行减慢";
+        message += "。是否依然要预览";
+        message += "？您也可以关闭始终预览选项";
+
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "文件过大", message);
+
+        if (reply == QMessageBox::No) {
+            return;
+        }
+    }
+
+    QTextStream readStream(&readFile);
+    QTextCodec *readCodec = QTextCodec::codecForName("GBK");
+    readStream.setCodec(readCodec);
+    QString content = readStream.readAll();
+    ui->filePreview->insertPlainText(content);
+
+    QByteArray getContent = readCodec->fromUnicode(content);
+
+    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");
+    QString transContent = tocodec->toUnicode(getContent);
+
+    ui->transPreview->insertPlainText(transContent);
+}
 
 void MainWindow::readAllFiles(const QString& path)
 {
@@ -142,6 +180,10 @@ void MainWindow::on_fileBrower_clicked(const QModelIndex &index)
         {
             ui->fileNameTrans->setEnabled(true);
             ui->fileTrans->setEnabled(true);
+            if(ui->previewAbled->isChecked())
+            {
+                MainWindow::filePretrans(filePath);
+            }
         }
         else
         {
