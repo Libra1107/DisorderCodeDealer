@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->folderBrower->setModel(model);
     ui->folderBrower->setColumnWidth(0, 320);
+
 }
 
 MainWindow::~MainWindow()
@@ -38,6 +39,17 @@ QString lineTrans(const QString& codeLine)
     return outputString;
 }
 
+void MainWindow::expandFolder(const QString& filepath)
+{
+
+    QModelIndex fileIndex = model->index(filepath);
+
+    ui->folderExpand->setModel(model);
+    ui->folderExpand->setRootIndex(fileIndex);
+    ui->folderExpand->setColumnWidth(0,270);
+
+    ui->folderExpand->expandToDepth(2);
+}
 
 void MainWindow::contentTrans(const QString& path)
 {
@@ -233,6 +245,8 @@ void MainWindow::on_folderBrower_clicked(const QModelIndex &index)
         {
             ui->folderFix->setEnabled(true);
             ui->attention->setEnabled(true);
+            MainWindow::expandFolder(folderPath);
+
         }
         else
         {
