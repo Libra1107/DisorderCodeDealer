@@ -43,6 +43,8 @@ private slots:
 
     void filePretrans(const QString& filepath);
 
+    void expandFolder(const QString& path);
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *model;
