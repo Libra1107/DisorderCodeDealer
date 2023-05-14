@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1000</width>
     <height>900</height>
    </rect>
   </property>
@@ -24,12 +24,12 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
+      <width>1001</width>
       <height>881</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabCodeTrans">
      <attribute name="title">
@@ -125,7 +125,7 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>780</width>
+        <width>691</width>
         <height>730</height>
        </rect>
       </property>
@@ -142,7 +142,7 @@
         <rect>
          <x>0</x>
          <y>25</y>
-         <width>780</width>
+         <width>691</width>
          <height>705</height>
         </rect>
        </property>
@@ -156,7 +156,7 @@
        <rect>
         <x>10</x>
         <y>750</y>
-        <width>781</width>
+        <width>691</width>
         <height>24</height>
        </rect>
       </property>
@@ -181,7 +181,7 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>400</x>
+        <x>310</x>
         <y>780</y>
         <width>391</width>
         <height>41</height>
@@ -225,6 +225,68 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QGroupBox" name="previewBox">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>10</y>
+        <width>281</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>文件预览</string>
+      </property>
+      <widget class="QPlainTextEdit" name="filePreview">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>25</y>
+         <width>281</width>
+         <height>256</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="transBox">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>320</y>
+        <width>281</width>
+        <height>281</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>转码预览</string>
+      </property>
+      <widget class="QPlainTextEdit" name="transPreview">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>25</y>
+         <width>281</width>
+         <height>256</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tabFolderFix">
@@ -339,7 +401,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1000</width>
      <height>17</height>
     </rect>
    </property>
