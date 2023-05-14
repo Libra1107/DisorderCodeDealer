@@ -165,7 +165,7 @@
         <widget class="QComboBox" name="currentCodeBox">
          <item>
           <property name="text">
-           <string>Shift-Jis</string>
+           <string>GBK</string>
           </property>
          </item>
          <item>
@@ -175,12 +175,12 @@
          </item>
          <item>
           <property name="text">
-           <string>GBK</string>
+           <string>UTF-8</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>UTF-8</string>
+           <string>Shift-Jis</string>
           </property>
          </item>
          <item>
@@ -204,7 +204,7 @@
         <widget class="QComboBox" name="originCodeBox">
          <item>
           <property name="text">
-           <string>GBK</string>
+           <string>Shift-Jis</string>
           </property>
          </item>
          <item>
@@ -214,12 +214,12 @@
          </item>
          <item>
           <property name="text">
-           <string>Shift-Jis</string>
+           <string>Latin1</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Latin1</string>
+           <string>GBK</string>
           </property>
          </item>
          <item>
@@ -252,7 +252,7 @@
         <x>10</x>
         <y>10</y>
         <width>691</width>
-        <height>730</height>
+        <height>710</height>
        </rect>
       </property>
       <property name="font">
@@ -269,7 +269,7 @@
          <x>0</x>
          <y>25</y>
          <width>691</width>
-         <height>705</height>
+         <height>685</height>
         </rect>
        </property>
        <property name="sortingEnabled">
@@ -281,7 +281,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>750</y>
+        <y>730</y>
         <width>691</width>
         <height>24</height>
        </rect>
@@ -301,54 +301,6 @@
        </item>
        <item>
         <widget class="QLineEdit" name="filePath"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>780</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="fileProcessor">
-       <item>
-        <widget class="QCheckBox" name="fileNameTrans">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>同时转换文件名</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="fileTrans">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>文件转换</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>
@@ -435,6 +387,180 @@
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QWidget" name="layoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>770</y>
+        <width>121</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="fileCodeInfo">
+       <item>
+        <widget class="QLabel" name="currentFileCode">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>编码格式</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="originFileCode">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>解码格式</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>770</y>
+        <width>551</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="fileCodeSelect_2">
+       <item>
+        <widget class="QComboBox" name="currentFileCodeBox">
+         <item>
+          <property name="text">
+           <string>GBK</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Latin1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Shift-Jis</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Big5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>iso-8859-1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>windows-1252</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="originFileCodeBox">
+         <item>
+          <property name="text">
+           <string>Shift-Jis</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Latin1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GBK</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>iso-8859-1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>windows-1252</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Big5</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QCheckBox" name="fileNameTrans">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>750</y>
+        <width>193</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>同时转换文件名</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="fileTrans">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>790</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>文件转换</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabFolderFix">
      <attribute name="title">
@@ -446,7 +572,7 @@
         <x>10</x>
         <y>10</y>
         <width>601</width>
-        <height>730</height>
+        <height>710</height>
        </rect>
       </property>
       <property name="font">
@@ -463,7 +589,7 @@
          <x>0</x>
          <y>25</y>
          <width>601</width>
-         <height>705</height>
+         <height>685</height>
         </rect>
        </property>
        <property name="sortingEnabled">
@@ -475,7 +601,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>750</y>
+        <y>730</y>
         <width>601</width>
         <height>24</height>
        </rect>
@@ -501,10 +627,10 @@
      <widget class="QWidget" name="layoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>780</y>
+        <x>640</x>
+        <y>770</y>
         <width>331</width>
-        <height>41</height>
+        <height>61</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="folderFixer">
@@ -534,7 +660,7 @@
           </font>
          </property>
          <property name="text">
-          <string>（这不会更改文件内容）</string>
+          <string>这不会更改文件内容</string>
          </property>
         </widget>
        </item>
@@ -570,6 +696,132 @@
         <bool>true</bool>
        </property>
       </widget>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>770</y>
+        <width>121</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="folderCodeInfo">
+       <item>
+        <widget class="QLabel" name="currentFolderCode">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>编码格式</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="originFolderCode">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>解码格式</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>770</y>
+        <width>481</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="folderCodeSelect">
+       <item>
+        <widget class="QComboBox" name="currentFolderCodeBox">
+         <item>
+          <property name="text">
+           <string>GBK</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Latin1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Shift-Jis</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Big5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>iso-8859-1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>windows-1252</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="originFolderCodeBox">
+         <item>
+          <property name="text">
+           <string>Shift-Jis</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UTF-8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Latin1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GBK</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>iso-8859-1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>windows-1252</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Big5</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
