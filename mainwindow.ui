@@ -31,7 +31,7 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tabCodeTrans">
      <attribute name="title">
       <string>文本转换</string>
      </attribute>
@@ -116,11 +116,11 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tabFileTrans">
      <attribute name="title">
       <string>文件转换</string>
      </attribute>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="fileBrowerGroup">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -205,7 +205,7 @@
           <bool>true</bool>
          </property>
          <property name="checked">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -226,10 +226,73 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+    </widget>
+    <widget class="QWidget" name="tabFolderFix">
+     <attribute name="title">
+      <string>目录修复</string>
+     </attribute>
+     <widget class="QGroupBox" name="folderBrowerGroup">
       <property name="geometry">
        <rect>
         <x>10</x>
+        <y>10</y>
+        <width>780</width>
+        <height>730</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="title">
+       <string>目录浏览</string>
+      </property>
+      <widget class="QTreeView" name="folderBrower">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>25</y>
+         <width>780</width>
+         <height>705</height>
+        </rect>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>750</y>
+        <width>781</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="folderPathLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>路径：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="folderPath"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
         <y>780</y>
         <width>331</width>
         <height>41</height>
