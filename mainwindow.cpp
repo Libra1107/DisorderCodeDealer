@@ -48,7 +48,7 @@ void MainWindow::expandFolder(const QString& filepath)
     ui->folderExpand->setRootIndex(fileIndex);
     ui->folderExpand->setColumnWidth(0,270);
 
-    ui->folderExpand->expandToDepth(2);
+    ui->folderExpand->expandToDepth(1);
 }
 
 void MainWindow::contentTrans(const QString& path)
