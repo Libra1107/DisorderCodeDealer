@@ -1,413 +1,253 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1000</width>
-    <height>900</height>
-   </rect>
-  </property>
-  <property name="font">
-   <font>
-    <pointsize>9</pointsize>
-   </font>
-  </property>
-  <property name="windowTitle">
-   <string>乱码转换</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1001</width>
-      <height>881</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="tabCodeTrans">
-     <attribute name="title">
-      <string>文本转换</string>
-     </attribute>
-     <widget class="QGroupBox" name="groupBoxGet">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>780</width>
-        <height>370</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="title">
-       <string>源码</string>
-      </property>
-      <widget class="QPlainTextEdit" name="sourceCode">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>780</width>
-         <height>345</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="codeTrans">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>390</y>
-        <width>80</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>转换</string>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBoxOut">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>440</y>
-        <width>780</width>
-        <height>370</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="title">
-       <string>解码</string>
-      </property>
-      <widget class="QPlainTextEdit" name="solvedCode">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>780</width>
-         <height>345</height>
-        </rect>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabFileTrans">
-     <attribute name="title">
-      <string>文件转换</string>
-     </attribute>
-     <widget class="QGroupBox" name="fileBrowerGroup">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>691</width>
-        <height>730</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="title">
-       <string>文件浏览</string>
-      </property>
-      <widget class="QTreeView" name="fileBrower">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>691</width>
-         <height>705</height>
-        </rect>
-       </property>
-       <property name="sortingEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>750</y>
-        <width>691</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="filePathLayout">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>路径：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="filePath"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>780</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="fileProcessor">
-       <item>
-        <widget class="QCheckBox" name="fileNameTrans">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>同时转换文件名</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="fileTrans">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>文件转换</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QGroupBox" name="previewBox">
-      <property name="geometry">
-       <rect>
-        <x>710</x>
-        <y>10</y>
-        <width>281</width>
-        <height>281</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="title">
-       <string>文件预览</string>
-      </property>
-      <widget class="QPlainTextEdit" name="filePreview">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>281</width>
-         <height>256</height>
-        </rect>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="transBox">
-      <property name="geometry">
-       <rect>
-        <x>710</x>
-        <y>320</y>
-        <width>281</width>
-        <height>281</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="title">
-       <string>转码预览</string>
-      </property>
-      <widget class="QPlainTextEdit" name="transPreview">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>281</width>
-         <height>256</height>
-        </rect>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabFolderFix">
-     <attribute name="title">
-      <string>目录修复</string>
-     </attribute>
-     <widget class="QGroupBox" name="folderBrowerGroup">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>780</width>
-        <height>730</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="title">
-       <string>目录浏览</string>
-      </property>
-      <widget class="QTreeView" name="folderBrower">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>25</y>
-         <width>780</width>
-         <height>705</height>
-        </rect>
-       </property>
-       <property name="sortingEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>750</y>
-        <width>781</width>
-        <height>24</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="folderPathLayout">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>路径：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="folderPath"/>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>460</x>
-        <y>780</y>
-        <width>331</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="folderFixer">
-       <item>
-        <widget class="QPushButton" name="folderFix">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>目录修复</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="attention">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>（这不会更改文件内容）</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1000</width>
-     <height>17</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <resources/>
- <connections/>
-</ui>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+#include <QIcon>
+#include <QDir>
+#include <QFileDialog>
+#include <QStringList>
+
+#include <QDebug>
+
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    model = new QFileSystemModel(this);
+    model->setRootPath(QDir::currentPath());
+    ui->fileBrower->setModel(model);
+    ui->fileBrower->setColumnWidth(0, 320);
+
+    ui->folderBrower->setModel(model);
+    ui->folderBrower->setColumnWidth(0, 320);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+QString lineTrans(const QString& codeLine)
+{
+    QTextCodec* fromcodec = QTextCodec::codecForName("GBK");
+    QByteArray getstring = fromcodec->fromUnicode(codeLine);
+
+    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");
+        QString outputString = tocodec->toUnicode(getstring);
+    return outputString;
+}
+
+
+void MainWindow::contentTrans(const QString& path)
+{
+
+    QFile readFile(path);
+    if (!readFile.open(QIODevice::Text | QIODevice::ReadOnly)) {
+        QMessageBox::warning(nullptr,tr("错误"),tr("无法打开文件"));
+        return;
+    }
+
+    QTextStream readStream(&readFile);
+    QTextCodec *readCodec = QTextCodec::codecForName("GBK");
+    readStream.setCodec(readCodec);
+
+    QFile writeFile(path + ".trans");
+    if (!writeFile.open(QIODevice::Text | QIODevice::WriteOnly)) {
+        QMessageBox::warning(nullptr,tr("错误"),tr("无法写入"));
+        return;
+    }
+
+    QTextStream writeStream(&writeFile);
+    QTextCodec *transCodec = QTextCodec::codecForName("Shift-Jis");
+    QTextCodec *writeCodec = QTextCodec::codecForName("UTF-8");
+    writeStream.setCodec(writeCodec);
+
+    while (!readStream.atEnd()) {
+        QString line = readStream.readLine();
+        QByteArray getLine = readCodec->fromUnicode(line);
+        QString outputString = transCodec->toUnicode(getLine);
+        writeStream<<outputString<<'\n';
+    }
+
+    readFile.close();
+    readFile.remove();
+    writeFile.close();
+
+    if(ui->fileNameTrans->isChecked())
+    {
+        QString newFilePath = lineTrans(path);
+        QFile::rename(path + ".trans", newFilePath);
+    }
+    else
+    {
+        QFile::rename(path + ".trans", path);
+    }
+}
+
+void MainWindow::filePretrans(const QString& filepath)
+{
+    ui->filePreview->clear();
+    ui->transPreview->clear();
+    QFile readFile(filepath);
+
+    if (!readFile.open(QIODevice::Text | QIODevice::ReadOnly)) {
+        ui->filePreview->insertPlainText("无法读取");
+        return;
+    }
+
+    QFileInfo fileInfo(filepath);
+    qint64 fileSize = fileInfo.size();
+    if (fileSize > 1024 * 1024 * 5) {
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "文件过大", "这个文件超过5MB，可能会减慢运行速度。是否依然要预览它？");
+
+        if (reply == QMessageBox::No) {
+            return;
+        }
+    }
+
+    QTextStream readStream(&readFile);
+    QTextCodec *readCodec = QTextCodec::codecForName("GBK");
+    readStream.setCodec(readCodec);
+    QString content = readStream.readAll();
+    ui->filePreview->insertPlainText(content);
+
+    QByteArray getContent = readCodec->fromUnicode(content);
+
+    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");
+    QString transContent = tocodec->toUnicode(getContent);
+
+    ui->transPreview->insertPlainText(transContent);
+}
+
+void MainWindow::readAllFiles(const QString& path)
+{
+    QString newPath = lineTrans(path);
+    QFileInfo fileInfo(path);
+
+    if (fileInfo.exists())
+    {
+        if (fileInfo.isDir())
+        {
+            QDir dir;
+            dir.mkpath(newPath);
+
+            QDirIterator folderIt(path, QDir::Dirs | QDir::NoDotAndDotDot);
+            while (folderIt.hasNext())
+            {
+                QString folderPath = folderIt.next();
+                MainWindow::readAllFiles(folderPath);
+            }
+
+            QDirIterator it(path, QDir::Files | QDir::NoSymLinks, QDirIterator::Subdirectories);
+            while (it.hasNext())
+            {
+                QString filePath = it.next();
+                QString newFilePath = lineTrans(filePath);
+                QFile::rename(filePath, newFilePath);
+            }
+
+            QDir(path).removeRecursively();
+        }
+    }
+}
+
+void MainWindow::on_codeTrans_clicked()
+{
+    QString inputString = ui->sourceCode->toPlainText();
+    if(inputString==0)
+    {
+        QMessageBox::warning(nullptr,tr("提示"),tr("输入内容"));
+        return;
+    }
+    ui->solvedCode->clear();
+    QString outputString = lineTrans(inputString);
+    ui->solvedCode->insertPlainText(outputString);
+}
+
+void MainWindow::on_fileBrower_clicked(const QModelIndex &index)
+{
+    QString filePath = model->filePath(index);
+    ui->filePath->setText(filePath);
+    QFileInfo fileInfo(filePath);
+    if (fileInfo.exists())
+    {
+        if (fileInfo.isFile())
+        {
+            ui->fileNameTrans->setEnabled(true);
+            ui->fileTrans->setEnabled(true);
+            MainWindow::filePretrans(filePath);
+        }
+        else
+        {
+            ui->fileNameTrans->setDisabled(true);
+            ui->fileTrans->setDisabled(true);
+        }
+    }
+}
+
+void MainWindow::on_fileTrans_clicked()
+{
+    QString filePath = ui->filePath->text();
+    MainWindow::contentTrans(filePath);
+}
+
+
+void MainWindow::on_filePath_returnPressed()
+{
+    QString filePath = ui->filePath->text();
+
+    QDir dir(filePath);
+    if (!dir.exists()) {
+        QMessageBox::warning(this, tr("错误"), tr("输入的路径不存在，将返回系统目录"));
+    }
+
+    QModelIndex fileIndex = model->index(filePath);
+    ui->fileBrower->setRootIndex(fileIndex);
+}
+
+
+
+void MainWindow::on_folderFix_clicked()
+{
+    QString folderPath = ui->folderPath->text();
+    MainWindow::readAllFiles(folderPath);
+}
+
+
+void MainWindow::on_folderBrower_clicked(const QModelIndex &index)
+{
+    QString folderPath = model->filePath(index);
+    ui->folderPath->setText(folderPath);
+    QFileInfo folderInfo(folderPath);
+    if (folderInfo.exists())
+    {
+        if (folderInfo.isDir())
+        {
+            ui->folderFix->setEnabled(true);
+            ui->attention->setEnabled(true);
+        }
+        else
+        {
+            ui->folderFix->setDisabled(true);
+            ui->attention->setDisabled(true);
+        }
+    }
+
+}
+
+
+void MainWindow::on_folderPath_returnPressed()
+{
+    QString folderPath = ui->folderPath->text();
+
+    QDir dir(folderPath);
+    if (!dir.exists()) {
+        QMessageBox::warning(this, tr("错误"), tr("输入的路径不存在，将返回系统目录"));
+    }
+
+    QModelIndex folderIndex = model->index(folderPath);
+    ui->folderBrower->setRootIndex(folderIndex);
+
+}
+
