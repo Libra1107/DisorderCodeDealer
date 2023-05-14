@@ -27,13 +27,15 @@ public:
     void contentTrans(const QString& path);
 
 private slots:
-    void on_pushButton_clicked();
+    void on_codeTrans_clicked();
 
     void on_fileBrower_clicked(const QModelIndex &index);
 
-    void on_pushButton_2_clicked();
+    void on_fileTrans_clicked();
 
     void on_filePath_returnPressed();
+
+    void on_folderFix_clicked();
 
 private:
     Ui::MainWindow *ui;
