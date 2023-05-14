@@ -98,8 +98,8 @@ void MainWindow::filePretrans(const QString& filepath)
 
     QFileInfo fileInfo(filepath);
     qint64 fileSize = fileInfo.size();
-    if (fileSize > 1024 * 1024 * 5) {
-        QMessageBox::StandardButton reply = QMessageBox::question(this, "文件过大", "这个文件超过5MB，可能会减慢运行速度。是否依然要预览它？");
+    if (fileSize > 1024 * 1024 ) {
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "文件过大", "这个文件超过1MB，可能会减慢运行速度。是否依然要预览它？");
 
         if (reply == QMessageBox::No) {
             return;
