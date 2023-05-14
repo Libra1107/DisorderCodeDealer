@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent)
     model->setRootPath(QDir::currentPath());
     ui->fileBrower->setModel(model);
     ui->fileBrower->setColumnWidth(0, 320);
+
+    ui->folderBrower->setModel(model);
+    ui->folderBrower->setColumnWidth(0, 320);
 }
 
 MainWindow::~MainWindow()
@@ -31,19 +34,13 @@ QString lineTrans(const QString& codeLine)
     QByteArray getstring = fromcodec->fromUnicode(codeLine);
 
     QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");\
-    QString outputString = tocodec->toUnicode(getstring);
+        QString outputString = tocodec->toUnicode(getstring);
     return outputString;
 }
 
 
 void MainWindow::contentTrans(const QString& path)
 {
-    if(ui->onlyTransName->isChecked())
-    {
-        QString newFilePath = lineTrans(path);
-        QFile::rename(path, newFilePath);
-        return;
-    }
 
     QFile readFile(path);
     if (!readFile.open(QIODevice::Text | QIODevice::ReadOnly)) {
@@ -91,21 +88,12 @@ void MainWindow::contentTrans(const QString& path)
 
 void MainWindow::readAllFiles(const QString& path)
 {
-    QString newPath = path;
-    if(ui->fileNameTrans->isChecked())
-    {
-        newPath = lineTrans(path);
-    }
-
+    QString newPath = lineTrans(path);
     QFileInfo fileInfo(path);
 
     if (fileInfo.exists())
     {
-        if (fileInfo.isFile())
-        {
-            MainWindow::contentTrans(path);
-        }
-        else if (fileInfo.isDir())
+        if (fileInfo.isDir())
         {
             QDir dir;
             dir.mkpath(newPath);
@@ -121,7 +109,8 @@ void MainWindow::readAllFiles(const QString& path)
             while (it.hasNext())
             {
                 QString filePath = it.next();
-                MainWindow::contentTrans(filePath);
+                QString newFilePath = lineTrans(filePath);
+                QFile::rename(filePath, newFilePath);
             }
 
             QDir(path).removeRecursively();
@@ -129,7 +118,7 @@ void MainWindow::readAllFiles(const QString& path)
     }
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_codeTrans_clicked()
 {
     QString inputString = ui->sourceCode->toPlainText();
     if(inputString==0)
@@ -146,13 +135,26 @@ void MainWindow::on_fileBrower_clicked(const QModelIndex &index)
 {
     QString filePath = model->filePath(index);
     ui->filePath->setText(filePath);
+    QFileInfo fileInfo(filePath);
+    if (fileInfo.exists())
+    {
+        if (fileInfo.isFile())
+        {
+            ui->fileNameTrans->setEnabled(true);
+            ui->fileTrans->setEnabled(true);
+        }
+        else
+        {
+            ui->fileNameTrans->setDisabled(true);
+            ui->fileTrans->setDisabled(true);
+        }
+    }
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_fileTrans_clicked()
 {
     QString filePath = ui->filePath->text();
-    MainWindow::readAllFiles(filePath);
-
+    MainWindow::contentTrans(filePath);
 }
 
 
@@ -167,5 +169,50 @@ void MainWindow::on_filePath_returnPressed()
 
     QModelIndex fileIndex = model->index(filePath);
     ui->fileBrower->setRootIndex(fileIndex);
+}
+
+
+
+void MainWindow::on_folderFix_clicked()
+{
+    QString folderPath = ui->folderPath->text();
+    MainWindow::readAllFiles(folderPath);
+}
+
+
+void MainWindow::on_folderBrower_clicked(const QModelIndex &index)
+{
+    QString folderPath = model->filePath(index);
+    ui->folderPath->setText(folderPath);
+    QFileInfo folderInfo(folderPath);
+    if (folderInfo.exists())
+    {
+        if (folderInfo.isDir())
+        {
+            ui->folderFix->setEnabled(true);
+            ui->attention->setEnabled(true);
+        }
+        else
+        {
+            ui->folderFix->setDisabled(true);
+            ui->attention->setDisabled(true);
+        }
+    }
+
+}
+
+
+void MainWindow::on_folderPath_returnPressed()
+{
+    QString folderPath = ui->folderPath->text();
+
+    QDir dir(folderPath);
+    if (!dir.exists()) {
+        QMessageBox::warning(this, tr("错误"), tr("输入的路径不存在，将返回系统目录"));
+    }
+
+    QModelIndex folderIndex = model->index(folderPath);
+    ui->folderBrower->setRootIndex(folderIndex);
+
 }
 
