@@ -29,13 +29,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QString lineTrans(const QString& codeLine)
+QString lineTrans(const QString& codeLine, const QString& fromCode , const QString& toCode)
 {
-    QTextCodec* fromcodec = QTextCodec::codecForName("GBK");
+    QTextCodec* fromcodec = QTextCodec::codecForName(fromCode.toUtf8());
     QByteArray getstring = fromcodec->fromUnicode(codeLine);
 
-    QTextCodec* tocodec = QTextCodec::codecForName("Shift-JIS");
-        QString outputString = tocodec->toUnicode(getstring);
+    QTextCodec* tocodec = QTextCodec::codecForName(toCode.toUtf8());
+    QString outputString = tocodec->toUnicode(getstring);
     return outputString;
 }
 
@@ -88,7 +88,7 @@ void MainWindow::contentTrans(const QString& path)
 
     if(ui->fileNameTrans->isChecked())
     {
-        QString newFilePath = lineTrans(path);
+        QString newFilePath = lineTrans(path, "GBK", "Shift-Jis");
         QFile::rename(path + ".trans", newFilePath);
     }
     else
@@ -138,7 +138,7 @@ void MainWindow::filePretrans(const QString& filepath)
 
 void MainWindow::readAllFiles(const QString& path)
 {
-    QString newPath = lineTrans(path);
+    QString newPath = lineTrans(path, "GBK", "Shift-Jis");
     QFileInfo fileInfo(path);
 
     if (fileInfo.exists())
@@ -159,7 +159,7 @@ void MainWindow::readAllFiles(const QString& path)
             while (it.hasNext())
             {
                 QString filePath = it.next();
-                QString newFilePath = lineTrans(filePath);
+                QString newFilePath = lineTrans(filePath, "GBK", "Shift-Jis");
                 QFile::rename(filePath, newFilePath);
             }
 
@@ -173,11 +173,11 @@ void MainWindow::on_codeTrans_clicked()
     QString inputString = ui->sourceCode->toPlainText();
     if(inputString==0)
     {
-        QMessageBox::warning(nullptr,tr("提示"),tr("输入内容"));
+        QMessageBox::warning(nullptr,tr("提示"),tr("还请输入内容"));
         return;
     }
     ui->solvedCode->clear();
-    QString outputString = lineTrans(inputString);
+    QString outputString = lineTrans(inputString,ui->currentCodeBox->currentText(),ui->originCodeBox->currentText());
     ui->solvedCode->insertPlainText(outputString);
 }
 
