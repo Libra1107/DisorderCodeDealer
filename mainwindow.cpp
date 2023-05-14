@@ -61,7 +61,7 @@ void MainWindow::contentTrans(const QString& path)
     }
 
     QTextStream readStream(&readFile);
-    QTextCodec *readCodec = QTextCodec::codecForName("GBK");
+    QTextCodec *readCodec = QTextCodec::codecForName(ui->currentFileCodeBox->currentText().toUtf8());
     readStream.setCodec(readCodec);
 
     QFile writeFile(path + ".trans");
@@ -71,7 +71,7 @@ void MainWindow::contentTrans(const QString& path)
     }
 
     QTextStream writeStream(&writeFile);
-    QTextCodec *transCodec = QTextCodec::codecForName("Shift-Jis");
+    QTextCodec *transCodec = QTextCodec::codecForName(ui->originFileCodeBox->currentText().toUtf8());
     QTextCodec *writeCodec = QTextCodec::codecForName("UTF-8");
     writeStream.setCodec(writeCodec);
 
@@ -88,7 +88,7 @@ void MainWindow::contentTrans(const QString& path)
 
     if(ui->fileNameTrans->isChecked())
     {
-        QString newFilePath = lineTrans(path, "GBK", "Shift-Jis");
+        QString newFilePath = lineTrans(path, ui->currentFileCodeBox->currentText(), ui->originFileCodeBox->currentText());
         QFile::rename(path + ".trans", newFilePath);
     }
     else
@@ -138,7 +138,7 @@ void MainWindow::filePretrans(const QString& filepath)
 
 void MainWindow::readAllFiles(const QString& path)
 {
-    QString newPath = lineTrans(path, "GBK", "Shift-Jis");
+    QString newPath = lineTrans(path, ui->currentFolderCodeBox->currentText(), ui->originFolderCodeBox->currentText());
     QFileInfo fileInfo(path);
 
     if (fileInfo.exists())
@@ -159,7 +159,7 @@ void MainWindow::readAllFiles(const QString& path)
             while (it.hasNext())
             {
                 QString filePath = it.next();
-                QString newFilePath = lineTrans(filePath, "GBK", "Shift-Jis");
+                QString newFilePath = lineTrans(filePath, ui->currentFolderCodeBox->currentText(), ui->originFolderCodeBox->currentText());
                 QFile::rename(filePath, newFilePath);
             }
 
