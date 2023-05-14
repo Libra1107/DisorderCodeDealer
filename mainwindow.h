@@ -41,6 +41,8 @@ private slots:
 
     void on_folderPath_returnPressed();
 
+    void filePretrans(const QString& filepath);
+
 private:
     Ui::MainWindow *ui;
     QFileSystemModel *model;
