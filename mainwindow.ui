@@ -63,7 +63,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="codeTrans">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -160,7 +160,7 @@
         <height>24</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="filePathLayout">
        <item>
         <widget class="QLabel" name="label">
          <property name="font">
@@ -178,33 +178,21 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>400</x>
         <y>780</y>
-        <width>541</width>
+        <width>391</width>
         <height>41</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QCheckBox" name="onlyTransName">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>仅更改文件名</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
+      <layout class="QHBoxLayout" name="fileProcessor">
        <item>
         <widget class="QCheckBox" name="fileNameTrans">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="font">
           <font>
            <pointsize>10</pointsize>
@@ -213,20 +201,68 @@
          <property name="text">
           <string>同时转换文件名</string>
          </property>
-         <property name="checked">
+         <property name="checkable">
           <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="fileTrans">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>转换</string>
+          <string>文件转换</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>780</y>
+        <width>331</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="folderFixer">
+       <item>
+        <widget class="QPushButton" name="folderFix">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>目录修复</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="attention">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>（这不会更改文件内容）</string>
          </property>
         </widget>
        </item>
